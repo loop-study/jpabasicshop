@@ -1,5 +1,8 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderItem;
+
 import javax.persistence.*;
 
 public class JpaMain {
@@ -15,6 +18,9 @@ public class JpaMain {
 
         try {
 
+            // 양방향을 한다면... 잘못된 설계지만 예제를 위해...
+            Order order = new Order();
+            order.addOrderItem(new OrderItem());
 
 
             tx.commit();
