@@ -12,13 +12,24 @@ public class Member extends BaseEntity {
     private Long id;
 
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+
+    @Embedded
+    private Address address;
+//    private String city;
+//    private String street;
+//    private String zipcode;
 
     // 만약에 양방향으로 가져가면
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>(); // 관례상 초기화해준다 null 문제예방도 됨
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -34,29 +45,5 @@ public class Member extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
     }
 }
